@@ -1,0 +1,33 @@
+Project Overview
+
+This Arduino code is designed to read the moisture level of the soil using a soil moisture sensor. It uses a calibrated approach based on real soil readings to provide an accurate measurement of the soil's moisture content. The sensor value is then mapped to a percentage (0-100%) to represent the moisture level in the soil.
+
+Libraries Used
+
+- No additional libraries are used in this code. It uses the built-in `analogRead` function for reading sensor data.
+
+Code Explanation
+
+1. Calibration Values:
+   - The sensor is calibrated with two values: `SOIL_DRY_VALUE` for dry soil and `SOIL_WET_VALUE` for wet soil. These values are based on your measurements of the sensor in dry and wet conditions.
+   
+2. Setup:
+   - Initializes serial communication at 9600 baud for debugging.
+   - Prints the calibration values (`SOIL_DRY_VALUE` and `SOIL_WET_VALUE`) to the serial monitor for reference.
+
+3. Loop:
+   - Continuously reads the raw sensor value from the soil moisture sensor (`analogRead(SENSOR_PIN)`).
+   - Maps the raw sensor value to a percentage using the `map` function, where the dry soil value maps to 0% and the wet soil value maps to 100%.
+   - The value is constrained between 0 and 100 to ensure the percentage stays within a valid range.
+   - Prints the raw sensor value and the corresponding soil moisture percentage to the serial monitor every 500 milliseconds.
+
+Expected Outputs
+
+- **Serial Output**: The serial monitor will display the raw sensor value and the corresponding soil moisture percentage in real-time, showing values like:
+  - Raw: 300   Soil Moisture: 75 %
+  - Raw: 500   Soil Moisture: 50 %
+  - Raw: 800   Soil Moisture: 10 %
+
+Conclusion
+
+This code provides a simple way to monitor soil moisture based on calibrated sensor values. By mapping the raw sensor readings to a percentage, it gives a clear understanding of the moisture content in the soil, which can be useful for applications like automatic irrigation systems.
